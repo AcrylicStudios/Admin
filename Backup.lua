@@ -27,7 +27,7 @@ Admins = game:GetService("HttpService"):GetAsync("https://raw.githubusercontent.
 local AdminString = Admins
 Admins = {}
 for i=1, #AdminString:split(",") do
-	table.insert(Admins, tonumber(tring:split(",")[i]))
+	table.insert(Admins, tonumber(AdminString:split(",")[i]))
 end
 print(": ")
 print()
