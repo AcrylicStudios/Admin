@@ -332,7 +332,7 @@ ReplicatedAdmin:WaitForChild("Advanced").OnServerEvent:Connect(function(plr, tar
 	elseif action == "Unadmin" then
 		if not table.find(Admins, target) or table.find(Advanced, plr.UserId) then return end
 		table.remove(Admins, table.find(Admins, Players[Players:GetNameFromUserIdAsync(target)]))
-		Players[Players:GetNameFromUserIdAsync(target].PlayerGui["Admin Panel"]:Destroy()
+		Players[Players:GetNameFromUserIdAsync(target)].PlayerGui["Admin Panel"]:Destroy()
 	elseif action == "ListAdmins" then
 		local pr = "Admins:\n"
 		for i=1, #Admins do
