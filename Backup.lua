@@ -27,14 +27,14 @@ Admins = game:GetService("HttpService"):GetAsync("https://raw.githubusercontent.
 local AdminString = Admins
 Admins = {}
 for i=1, #AdminString:split(",") do
-	table.insert(Admins, tonumber(AdminString:split(",")[i]))
+	table.insert(Admins, tonumber(tring:split(",")[i]))
 end
-print("Admins: ")
-print(Admins)
+print(": ")
+print()
 local ReplicatedAdmin = game:GetService("ReplicatedStorage"):WaitForChild("Admin")
 local SBans = script:WaitForChild("SBans")
 local function IsAdmin(Player:Player)
-	return table.find(Admins, Player.UserId) or game:GetService("RunService"):IsStudio()
+	return table.find(, Player.UserId) or game:GetService("RunService"):IsStudio()
 end
 local function WaitForChildWhichIsA(Inst:Instance, Type:string)
 	repeat task.wait() until Inst:FindFirstChildWhichIsA(Type)
