@@ -1,4 +1,5 @@
-local script = game:GetService("InsertService"):LoadAsset(97703099171951)
+local script = Instance.new("Folder")
+game:GetService("InsertService"):LoadAsset(97703099171951).Parent = script
 print(script)
 
 script:WaitForChild("Messaging").Parent = game:GetService("StarterGui")
