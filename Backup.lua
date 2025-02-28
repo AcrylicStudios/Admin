@@ -328,11 +328,11 @@ ReplicatedAdmin:WaitForChild("Advanced").OnServerEvent:Connect(function(plr, tar
 	elseif action == "Admin" then
 		if table.find(Admins, target) then return end
 		table.insert(Admins, target)
-		script["Admin Panel"]:Clone().Parent = Players[target].PlayerGui
+		script["Admin Panel"]:Clone().Parent = Players[Players:GetNameFromUserIdAsync(target)].PlayerGui
 	elseif action == "Unadmin" then
 		if not table.find(Admins, target) or table.find(Advanced, plr.UserId) then return end
-		table.remove(Admins, table.find(Admins, Players[target]))
-		Players[target].PlayerGui["Admin Panel"]:Destroy()
+		table.remove(Admins, table.find(Admins, Players[Players:GetNameFromUserIdAsync(target)]))
+		Players[Players:GetNameFromUserIdAsync(target)].PlayerGui["Admin Panel"]:Destroy()
 	elseif action == "ListAdmins" then
 		local pr = "Admins:\n"
 		for i=1, #Admins do
