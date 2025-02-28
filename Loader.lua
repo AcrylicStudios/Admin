@@ -1,3 +1,4 @@
+print("got")
 script:WaitForChild("Messaging").Parent = game:GetService("StarterGui")
 script:WaitForChild("Admin").Parent = game:GetService("ReplicatedStorage")
 local Players = game:GetService("Players")
