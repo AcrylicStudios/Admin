@@ -24,7 +24,6 @@ else
 	JobId = game.JobId
 end
 Admins = game:GetService("HttpService"):GetAsync("https://raw.githubusercontent.com/AcrylicStudios/Admin/refs/heads/main/Admins")
-Admins = game:GetService("HttpService"):JSONDecode(Admins)
 local AdminString = Admins
 Admins = {}
 for i=1, #AdminString:split(",") do
