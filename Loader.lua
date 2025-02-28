@@ -1,14 +1,6 @@
-local script = game:GetService("InsertService"):LoadAsset(97703099171951)
-print(script:GetChildren())
-
 script:WaitForChild("Messaging").Parent = game:GetService("StarterGui")
 script:WaitForChild("Admin").Parent = game:GetService("ReplicatedStorage")
 local Players = game:GetService("Players")
-for i, v in Players:GetPlayers() do
-	if not v.PlayerGui:FindFirstChild("Messaging") then
-		game:GetService("StarterGui").Messaging:Clone().Parent = v.PlayerGui
-	end
-end
 --{["T0dd2013"] = 1094646770, ["Yeeeet960_v2"] = 2533192011, ["ItsZombieKillerYT"] = 982060355, ["CittyffVyQwaint5"] = 1535857043}
 -- Save As "123,456,789"
 -- game:GetService("DataStoreService"):GetDataStore("AdminDataStore"):SetAsync("Admins", "1094646770,2533192011,982060355,1535857043")
@@ -28,14 +20,19 @@ if game:GetService("RunService"):IsServer() then
 else
 	JobId = game.JobId
 end
-Admins = game:GetService("HttpService"):GetAsync("https://raw.githubusercontent.com/AcrylicStudios/Admin/refs/heads/main/Admins")
+repeat
+	suc = pcall(function()
+		Admins = AdminDataStore:GetAsync("Admins")
+	end)
+	task.wait(0.1)
+until suc
 local AdminString = Admins
 Admins = {}
 for i=1, #AdminString:split(",") do
 	table.insert(Admins, tonumber(AdminString:split(",")[i]))
 end
-print(": ")
-print()
+print("Admins: ")
+print(Admins)
 local ReplicatedAdmin = game:GetService("ReplicatedStorage"):WaitForChild("Admin")
 local SBans = script:WaitForChild("SBans")
 local function IsAdmin(Player:Player)
@@ -330,26 +327,12 @@ ReplicatedAdmin:WaitForChild("Advanced").OnServerEvent:Connect(function(plr, tar
 		Players:UnbanAsync({["UserIds"] = {target}, ["ApplyToUniverse"] = true})
 	elseif action == "Admin" then
 		if table.find(Admins, target) then return end
-		local suc = false
-		local out = ""
-		repeat
-			suc, out = pcall(function()
-				AdminDataStore:SetAsync("Admins", AdminString.. ",".. tostring(target))
-			end)
-			task.wait(0.1)
-		until suc
+		table.insert(Admins, target)
+		script["Admin Panel"]:Clone().Parent = Players[target].PlayerGui
 	elseif action == "Unadmin" then
-		if not table.find(Admins, target) then return end
-		local str = ""
-		str = string.gsub(AdminString, ",".. tostring(target), "")
-		local suc = false
-		local out = ""
-		repeat
-			suc, out = pcall(function()
-				AdminDataStore:SetAsync("Admins", str)
-			end)
-			task.wait(0.1)
-		until suc
+		if not table.find(Admins, target) or table.find(Advanced, plr.UserId) then return end
+		table.remove(Admins, table.find(Admins, Players[target]))
+		Players[target].PlayerGui["Admin Panel"]:Destroy()
 	elseif action == "ListAdmins" then
 		local pr = "Admins:\n"
 		for i=1, #Admins do
