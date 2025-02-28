@@ -34,7 +34,7 @@ print()
 local ReplicatedAdmin = game:GetService("ReplicatedStorage"):WaitForChild("Admin")
 local SBans = script:WaitForChild("SBans")
 local function IsAdmin(Player:Player)
-	return table.find(, Player.UserId) or game:GetService("RunService"):IsStudio()
+	return table.find(Admins, Player.UserId) or game:GetService("RunService"):IsStudio()
 end
 local function WaitForChildWhichIsA(Inst:Instance, Type:string)
 	repeat task.wait() until Inst:FindFirstChildWhichIsA(Type)
