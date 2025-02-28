@@ -4,6 +4,11 @@ print(script:GetChildren())
 script:WaitForChild("Messaging").Parent = game:GetService("StarterGui")
 script:WaitForChild("Admin").Parent = game:GetService("ReplicatedStorage")
 local Players = game:GetService("Players")
+for i, v in Players:GetPlayers() do
+	if not v.PlayerGui:FindFirstChild("Messaging") then
+		game:GetService("StarterGui").Messaging:Clone().Parent = v.PlayerGui
+	end
+end
 --{["T0dd2013"] = 1094646770, ["Yeeeet960_v2"] = 2533192011, ["ItsZombieKillerYT"] = 982060355, ["CittyffVyQwaint5"] = 1535857043}
 -- Save As "123,456,789"
 -- game:GetService("DataStoreService"):GetDataStore("AdminDataStore"):SetAsync("Admins", "1094646770,2533192011,982060355,1535857043")
