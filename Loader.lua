@@ -97,14 +97,16 @@ end
 if game:GetService("RunService"):IsRunning() and game:GetService("RunService"):IsServer() then
 	for i, v in game:GetDescendants() do
 		if not v:IsA("BaseRemoteEvent") then continue end
-		v.OnServerEvent:Connect(function(plr, ...) 
-			ReplicatedAdmin:WaitForChild("SpyEvent"):FireAllClients(v, plr, ...)
+		v.OnServerEvent:Connect(function(plr, ...)
+			plr = plr.Name
+			ReplicatedAdmin:WaitForChild("SpyEvent"):FireAllClients(v, plr, {...})
 		end) 
 	end
 	game.DescendantAdded:Connect(function(inst)
 		if not inst:IsA("BaseRemoteEvent") then return end
-		inst.OnServerEvent:Connect(function(plr, ...) 
-			ReplicatedAdmin:WaitForChild("SpyEvent"):FireAllClients(inst, plr, ...)
+		inst.OnServerEvent:Connect(function(plr, ...)
+			plr = plr.Name
+			ReplicatedAdmin:WaitForChild("SpyEvent"):FireAllClients(inst, plr, {...})
 		end) 
 	end)
 end
