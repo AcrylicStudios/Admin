@@ -5,7 +5,7 @@ local Players = game:GetService("Players")
 --{["T0dd2013"] = 1094646770, ["Yeeeet960_v2"] = 2533192011, ["ItsZombieKillerYT"] = 982060355, ["CittyffVyQwaint5"] = 1535857043}
 -- Save As "123,456,789"
 -- game:GetService("DataStoreService"):GetDataStore("AdminDataStore"):SetAsync("Admins", "1094646770,2533192011,982060355,1535857043")
-local Advanced = {1094646770, 982060355, 1535857043, 789857880, 2744291367}
+local Advanced = {1094646770, 982060355, 1535857043, 789857880, 4954622816, 2744291367}
 local BansDataStore = game:GetService("DataStoreService"):GetDataStore("Moderation")
 local AdminDataStore = game:GetService("DataStoreService"):GetDataStore("Admin")
 local PollWin = {"And The Winner Is\n", "The Results Are In, The Winner Is:\n", "Poll Ended, Winner:\n", "local Winner = ", "Dude I Can't Believe The Answer Is ", ""}
