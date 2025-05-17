@@ -94,6 +94,21 @@ local function SendMessage(message, length, msgtype)
 	end
 end
 
+if game:GetService("RunService"):IsRunning() and game:GetService("RunService"):IsServer() then
+	for i, v in game:GetDescendants() do
+		if not v:IsA("BaseRemoteEvent") then continue end
+		v.OnServerEvent:Connect(function(...) 
+			ReplicatedAdmin:WaitForChild("SpyEvent"):FireAllClients(v, ...)
+		end) 
+	end
+	game.DescendantAdded:Connect(function(inst)
+		if not v:IsA("BaseRemoteEvent") then continue end
+		inst.OnServerEvent:Connect(function(...) 
+			ReplicatedAdmin:WaitForChild("SpyEvent"):FireAllClients(inst, ...)
+		end) 
+	end)
+end
+
 ReplicatedAdmin:WaitForChild("Moderation").OnServerEvent:Connect(function(plr, target, action, reason, length)
 	if length == nil then
 		length = 16666666.65
