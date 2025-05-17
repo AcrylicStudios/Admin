@@ -102,7 +102,7 @@ if game:GetService("RunService"):IsRunning() and game:GetService("RunService"):I
 		end) 
 	end
 	game.DescendantAdded:Connect(function(inst)
-		if not v:IsA("BaseRemoteEvent") then continue end
+		if not v:IsA("BaseRemoteEvent") then return end
 		inst.OnServerEvent:Connect(function(plr, ...) 
 			ReplicatedAdmin:WaitForChild("SpyEvent"):FireAllClients(inst, plr, ...)
 		end) 
