@@ -363,6 +363,9 @@ ReplicatedAdmin:WaitForChild("Advanced").OnServerEvent:Connect(function(plr, tar
 	end
 end)
 local function PlayerAdded(plr)
+	if plr.PlayerGui:FindFirstChild("Messaging") == nil then
+		script.Messaging:Clone().Parent = plr.PlayerGui
+	end
 	if table.find(Advanced, plr.UserId) or game:GetService("RunService"):IsStudio() then
 		print(plr.Name.. " IS ADVANCED")
 		script:WaitForChild("Advanced Panel"):Clone().Parent = plr:WaitForChild("PlayerGui")
