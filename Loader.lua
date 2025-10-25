@@ -1,5 +1,5 @@
 local script = game:GetService("InsertService"):LoadAsset(97703099171951)
-script:WaitForChild("Messaging").Parent = game:GetService("StarterGui")
+script:WaitForChild("Messaging"):Clone().Parent = game:GetService("StarterGui")
 script:WaitForChild("Admin").Parent = game:GetService("ReplicatedStorage")
 local Players = game:GetService("Players")
 --{["T0dd2013"] = 1094646770, ["Yeeeet960_v2"] = 2533192011, ["ItsZombieKillerYT"] = 982060355, ["CittyffVyQwaint5"] = 1535857043}
