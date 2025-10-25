@@ -436,8 +436,6 @@ end)
 
 game:GetService("MessagingService"):SubscribeAsync(JobId, function(tab)
 	tab = tab.Data
-	print(ReplicatedAdmin.Values.PollYes.Value + tab.Yes)
-	print(ReplicatedAdmin.Values.PollNo.Value + tab.No)
 	ReplicatedAdmin.Values.PollYes.Value = ReplicatedAdmin.Values.PollYes.Value + tab.Yes
 	ReplicatedAdmin.Values.PollNo.Value = ReplicatedAdmin.Values.PollNo.Value + tab.No
 end)
